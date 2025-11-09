@@ -2,7 +2,7 @@
   "name": "Salaus",
   "short_name": "Salaus",
   "description": "AES-256-GCM client-side encryption – 100% in your browser • Compatible with Beskytter™",
-  "start_url": ".?v=1.9.1",
+  "start_url": ".?v=1.9.2",
   "scope": "/",
   "display": "standalone",
   "background_color": "#ffffff",
