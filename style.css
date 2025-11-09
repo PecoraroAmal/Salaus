@@ -30,7 +30,7 @@ body {
 
 @media (max-width: 768px) {
     .container { max-width: 100%; padding: 0 1rem; }
-    body { padding: 1.5rem 0 0; }
+    body { padding: 1.6rem 0 0; }
 }
 
 header { position: relative; margin-bottom: 2rem; }
@@ -40,14 +40,14 @@ h1 i { margin-right: .5rem; }
 
 header p { font-size: .95rem; opacity: .9; margin: .4rem 0 1rem; }
 
-nav { margin: 1.5rem 0; }
+nav { margin: 1.6rem 0; }
 nav a { color: var(--black); text-decoration: none; font-weight: 600; }
 nav a:hover { text-decoration: underline; }
 
 .tabs {
     display: flex;
     gap: 2rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.6rem;
 }
 
 .tab {
@@ -55,7 +55,7 @@ nav a:hover { text-decoration: underline; }
     background: var(--white);
     border: 2px solid var(--border);
     border-radius: 6px;
-    padding: 1rem 1.5rem;
+    padding: 1rem 1.6rem;
     font-size: 1rem;
     cursor: pointer;
     transition: all .2s;
@@ -125,7 +125,7 @@ textarea[readonly] { background: var(--light-gray); }
     border: 2px solid var(--border);
     border-radius: 6px;
     padding: .8rem;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     cursor: pointer;
     color: var(--gray);
     transition: background .2s;
@@ -137,7 +137,7 @@ textarea[readonly] { background: var(--light-gray); }
     display: flex;
     justify-content: center;
     gap: 1rem;
-    margin: 1.5rem 0;
+    margin: 1.6rem 0;
 }
 
 button.primary {
@@ -208,14 +208,14 @@ button.primary i { font-size: 1.2rem; }
     box-shadow: 0 6px 16px rgba(0,0,0,.3);
 }
 
-#pwa-install-btn i { font-size: 1.5rem; }
+#pwa-install-btn i { font-size: 1.6rem; }
 
 .toast {
     position: fixed;
     top: 1rem;
     right: 1rem;
     z-index: 9999;
-    padding: 1rem 1.5rem;
+    padding: 1rem 1.6rem;
     border-radius: 8px;
     font-weight: 600;
     box-shadow: 0 4px 12px rgba(0,0,0,.15);
@@ -235,7 +235,7 @@ button.primary i { font-size: 1.2rem; }
     gap: .5rem;
     background: var(--black);
     color: var(--white);
-    padding: .8rem 1.5rem;
+    padding: .8rem 1.6rem;
     border-radius: 6px;
     text-decoration: none;
     font-weight: 600;
@@ -249,7 +249,7 @@ button.primary i { font-size: 1.2rem; }
 
 footer {
     margin-top: 4rem;
-    padding: 2rem 0 1.5rem;
+    padding: 2rem 0 1.6rem;
     text-align: center;
     font-size: .9rem;
     border-top: 2px solid var(--border);
@@ -278,5 +278,5 @@ footer .footer-buttons {
     #pwa-install-btn { padding: .6rem .9rem; font-size: .9rem; }
     #action-section { gap: .8rem; }
     button.primary { padding: .7rem 1.1rem; font-size: 1rem; }
-    footer { margin-top: 3rem; padding: 1.5rem 0; }
+    footer { margin-top: 3rem; padding: 1.6rem 0; }
 }

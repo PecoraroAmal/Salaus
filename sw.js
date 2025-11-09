@@ -1,43 +1,47 @@
-const CACHE = 'Salaus-v1';
-const FILES = [
+const CACHE_NAME = 'salaus-v4';
+const FILES_TO_CACHE = [
   '/',
-  '/index.html?v=1.5',
-  '/info.html?v=1.5',
-  '/informazioni.html?v=1.5',
-  '/cookie-privacy.html?v=1.5',
-  '/style.css?v=1.5',
-  '/Salaus.js?v=1.5',
-  '/app.js?v=1.5',
+  '/index.html?v=1',
+  '/style.css?v=1',
+  '/salaus.js?v=1',
+  '/app.js?v=1',
   '/site.webmanifest',
-  '/sw.js?v=1.5',
   '/apple-touch-icon.png',
   '/favicon.ico',
   '/favicon.svg',
   '/favicon-96x96.png',
   '/web-app-manifest-192x192.png',
   '/web-app-manifest-512x512.png',
+  '/cookie-privacy.html',
+  '/info.html',
+  '/informazioni.html',
   'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css'
 ];
 
 self.addEventListener('install', e => {
   e.waitUntil(
-    caches.open(CACHE).then(cache => cache.addAll(FILES))
+    caches.open(CACHE_NAME).then(cache => cache.addAll(FILES_TO_CACHE))
   );
+  self.skipWaiting();
+});
+
+self.addEventListener('activate', e => {
+  e.waitUntil(
+    caches.keys().then(keys => Promise.all(
+      keys.map(key => { if (key !== CACHE_NAME) caches.delete(key); })
+    ))
+  );
+  self.clients.claim();
 });
 
 self.addEventListener('fetch', e => {
-  e.respondWith(
-    caches.match(e.request).then(resp => resp || fetch(e.request))
-  );
-});
-self.addEventListener('activate', event => {
-    event.waitUntil(
-        clients.claim().then(() => {
-            return self.clients.matchAll().then(clients => {
-                return Promise.all(
-                    clients.map(client => client.postMessage({ type: 'SW_ACTIVATED' }))
-                );
-            });
-        })
+  if (e.request.mode === 'navigate') {
+    e.respondWith(
+      fetch(e.request).catch(() => caches.match('/index.html'))
     );
+  } else {
+    e.respondWith(
+      caches.match(e.request).then(response => response || fetch(e.request))
+    );
+  }
 });
