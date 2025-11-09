@@ -46,9 +46,6 @@ async function encrypt(plainText, password) {
     result.set(iv, 1 + SALT_LENGTH_NEW);
     result.set(ciphertext, 1 + SALT_LENGTH_NEW + IV_LENGTH);
     const b64 = uint8ToBase64Url(result);
-    zeroBuffer(encoded);
-    zeroBuffer(ciphertext);
-    zeroBuffer(result);
     return b64;
 }
 
@@ -71,10 +68,8 @@ async function decrypt(encryptedBase64, password) {
                 { name: "AES-GCM", iv }, key, ciphertext
             );
             const text = new TextDecoder().decode(decrypted);
-            zeroBuffer(data);
             return text;
         } catch (e) {
-            zeroBuffer(data);
             throw new Error("Incorrect password or corrupted data");
         }
     }
@@ -88,10 +83,8 @@ async function decrypt(encryptedBase64, password) {
             { name: "AES-GCM", iv }, key, ciphertext
         );
         const text = new TextDecoder().decode(decrypted);
-        zeroBuffer(data);
         return text;
     } catch (e) {
-        zeroBuffer(data);
         throw new Error("Incorrect password or corrupted data");
     }
 }

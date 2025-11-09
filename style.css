@@ -139,7 +139,7 @@ button.primary {
     color: var(--white);
     border: none;
     padding: .9rem 1.4rem;
-    font-size: 1.15rem;
+    font-size: 1.25rem;
     cursor: pointer;
     border-radius: 6px;
     margin: .5rem .25rem;
@@ -200,7 +200,7 @@ button.primary i { margin-right: .4rem; }
     box-shadow: 0 6px 16px rgba(0,0,0,.3);
 }
 
-#pwa-install-btn i { font-size: 1.1rem; }
+#pwa-install-btn i { font-size: 1.2rem; }
 
 .toast {
     position: fixed;
