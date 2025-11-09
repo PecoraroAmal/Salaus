@@ -39,7 +39,9 @@ body {
     width: 100%;
 }
 
-/* Header */
+/* ========================================
+   HEADER
+   ======================================== */
 header {
     margin-bottom: clamp(2rem, 4vw, 3rem);
     text-align: center;
@@ -71,14 +73,25 @@ nav a {
     color: var(--black);
     text-decoration: none;
     font-weight: 600;
+    font-size: clamp(0.875rem, 2vw, 1rem);
+    padding: 0.25rem 0;
+    border-bottom: 2px solid transparent;
     transition: var(--transition);
 }
 
 nav a:hover {
-    opacity: 0.7;
+    border-bottom-color: var(--black);
 }
 
-/* Tabs */
+/* Header per pagine info */
+header.info-header {
+    border-bottom: 2px solid var(--black);
+    padding-bottom: 1.5rem;
+}
+
+/* ========================================
+   TABS (index.html)
+   ======================================== */
 .tabs {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -108,7 +121,9 @@ nav a:hover {
     color: var(--white);
 }
 
-/* Form Elements */
+/* ========================================
+   FORM ELEMENTS
+   ======================================== */
 textarea,
 input[type="password"],
 input[type="text"] {
@@ -139,7 +154,9 @@ textarea[readonly] {
     cursor: not-allowed;
 }
 
-/* Drop Zone */
+/* ========================================
+   DROP ZONE
+   ======================================== */
 .drop-zone {
     border: 2px dashed var(--border);
     padding: clamp(2rem, 5vw, 3rem) clamp(1rem, 3vw, 1.5rem);
@@ -177,7 +194,9 @@ textarea[readonly] {
     text-decoration: underline;
 }
 
-/* File Info */
+/* ========================================
+   FILE INFO
+   ======================================== */
 #file-info {
     display: flex;
     align-items: center;
@@ -212,7 +231,9 @@ textarea[readonly] {
     color: var(--black);
 }
 
-/* Password Wrapper */
+/* ========================================
+   PASSWORD WRAPPER
+   ======================================== */
 .password-wrapper {
     display: flex;
     gap: 0.75rem;
@@ -239,7 +260,9 @@ textarea[readonly] {
     color: var(--black);
 }
 
-/* Actions */
+/* ========================================
+   ACTION SECTION
+   ======================================== */
 #action-section {
     display: flex;
     justify-content: center;
@@ -277,7 +300,9 @@ button.primary i {
     font-size: clamp(1rem, 2.5vw, 1.25rem);
 }
 
-/* Output Actions */
+/* ========================================
+   OUTPUT ACTIONS
+   ======================================== */
 .output-actions {
     margin-top: 1rem;
     display: flex;
@@ -303,12 +328,130 @@ button.primary i {
     color: var(--white);
 }
 
-/* Utilities */
-.hidden {
-    display: none !important;
+/* ========================================
+   MAIN.INFO – PAGINE INFORMATIVE
+   ======================================== */
+main.info {
+    background: var(--white);
+    padding: clamp(1.5rem, 3vw, 2rem);
+    border-radius: var(--radius);
+    border: 2px solid var(--black);
+    box-shadow: var(--shadow-md);
+    margin-bottom: clamp(2rem, 4vw, 3rem);
 }
 
-/* PWA Install */
+main.info h2 {
+    font-size: clamp(1.5rem, 3.5vw, 2rem);
+    font-weight: 700;
+    margin: clamp(1.5rem, 3vw, 2rem) 0 clamp(1rem, 2vw, 1.5rem);
+    letter-spacing: -0.01em;
+    position: relative;
+}
+
+main.info h2::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -0.5rem;
+    width: 60px;
+    height: 3px;
+    background: var(--black);
+    border-radius: 2px;
+}
+
+main.info h3 {
+    font-size: clamp(1.125rem, 2.5vw, 1.375rem);
+    font-weight: 600;
+    margin: clamp(1.5rem, 3vw, 2rem) 0 1rem;
+    color: var(--gray-dark);
+}
+
+main.info p {
+    margin-bottom: 1rem;
+    font-size: clamp(0.9375rem, 2.2vw, 1rem);
+}
+
+main.info p strong {
+    color: var(--black);
+    font-weight: 700;
+}
+
+/* Liste */
+main.info ul,
+main.info ol {
+    margin: 1.25rem 0;
+    padding-left: 1.5rem;
+}
+
+main.info ul li,
+main.info ol li {
+    margin-bottom: 0.75rem;
+    font-size: clamp(0.9375rem, 2.2vw, 1rem);
+    position: relative;
+}
+
+main.info ul li strong,
+main.info ol li strong {
+    color: var(--black);
+    font-weight: 600;
+}
+
+/* Liste numerate */
+main.info ol {
+    counter-reset: list-counter;
+    list-style: none;
+    padding-left: 0;
+}
+
+main.info ol li {
+    counter-increment: list-counter;
+    padding-left: 2.5rem;
+}
+
+main.info ol li::before {
+    content: counter(list-counter);
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: var(--black);
+    color: var(--white);
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.875rem;
+    line-height: 1;
+}
+
+/* Liste puntate */
+main.info ul {
+    list-style: none;
+}
+
+main.info ul li::before {
+    content: '●';
+    color: var(--black);
+    font-weight: bold;
+    position: absolute;
+    left: -1.25rem;
+    top: 0.1em;
+}
+
+main.info small {
+    display: block;
+    margin-top: 1.5rem;
+    font-size: clamp(0.8125rem, 2vw, 0.875rem);
+    color: var(--gray-dark);
+    font-style: italic;
+    line-height: 1.5;
+}
+
+/* ========================================
+   PWA INSTALL BUTTON
+   ======================================== */
 #pwa-install-container {
     position: fixed;
     top: clamp(1rem, 2vw, 1.5rem);
@@ -341,7 +484,9 @@ button.primary i {
     font-size: clamp(1rem, 2.5vw, 1.25rem);
 }
 
-/* Toast */
+/* ========================================
+   TOAST
+   ======================================== */
 .toast {
     position: fixed;
     top: clamp(1rem, 2vw, 1.5rem);
@@ -373,7 +518,9 @@ button.primary i {
     border: 2px solid var(--black);
 }
 
-/* Buttons */
+/* ========================================
+   BUTTONS (Donation, Install)
+   ======================================== */
 .donation-button,
 .install-button {
     display: inline-flex;
@@ -400,7 +547,9 @@ button.primary i {
     color: var(--white);
 }
 
-/* Footer */
+/* ========================================
+   FOOTER
+   ======================================== */
 footer {
     margin-top: clamp(3rem, 6vw, 5rem);
     padding: clamp(1.5rem, 3vw, 2rem) 0;
@@ -411,12 +560,15 @@ footer {
 
 footer a {
     color: var(--black);
-    text-decoration: underline;
+    text-decoration: none;
     font-weight: 600;
+    padding: 0.25rem 0;
+    border-bottom: 2px solid transparent;
+    transition: var(--transition);
 }
 
 footer a:hover {
-    opacity: 0.7;
+    border-bottom-color: var(--black);
 }
 
 footer small {
@@ -433,7 +585,16 @@ footer .footer-buttons {
     align-items: center;
 }
 
-/* Responsive Design */
+/* ========================================
+   UTILITIES
+   ======================================== */
+.hidden {
+    display: none !important;
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
 @media (max-width: 768px) {
     .tabs {
         grid-template-columns: 1fr;
@@ -453,6 +614,20 @@ footer .footer-buttons {
 
     #toggle-pass {
         width: 100%;
+    }
+
+    main.info {
+        padding: clamp(1rem, 2.5vw, 1.5rem);
+    }
+
+    main.info ol li {
+        padding-left: 2.25rem;
+    }
+
+    main.info ol li::before {
+        width: 1.5rem;
+        height: 1.5rem;
+        font-size: 0.8125rem;
     }
 }
 
@@ -478,9 +653,22 @@ footer .footer-buttons {
         left: 1rem;
         right: 1rem;
     }
+
+    main.info h2 {
+        font-size: 1.5rem;
+    }
+
+    main.info h3 {
+        font-size: 1.125rem;
+    }
+
+    main.info ol li::before {
+        width: 1.4rem;
+        height: 1.4rem;
+        font-size: 0.75rem;
+    }
 }
 
-/* Extra small devices */
 @media (max-width: 360px) {
     body {
         padding: 0.75rem;
@@ -491,7 +679,6 @@ footer .footer-buttons {
     }
 }
 
-/* Large screens optimization */
 @media (min-width: 1200px) {
     .container {
         max-width: 900px;

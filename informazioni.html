@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Salaus - Come funziona</title>
-    <meta name="description" content="Technical explanation of Salaus encryption">
+    <meta name="description" content="Spiegazione tecnica della crittografia di Salaus">
     <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <link rel="shortcut icon" href="favicon.ico" />
@@ -12,39 +12,40 @@
     <meta name="apple-mobile-web-app-title" content="Salaus" />
     <link rel="manifest" href="manifest.json" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css?v=1.9.7">
+    <link rel="stylesheet" href="style.css?v=1.9.8">
 </head>
 <body>
     <div class="container">
         <header>
             <h1>Salaus</h1>
-            <nav><a href="info.html?v=1.9.7">English</a></nav>
+            <nav><a href="info.html?v=1.9.8">English</a></nav>
         </header>
 
         <main class="info">
             <h2>Come funziona Salaus</h2>
             <p><strong>Tutto avviene nel tuo browser.</strong> Nessun dato viene mai inviato a server esterni.</p>
-
-            <h3>Standard di cifratura</h3>
+            <p><strong>Salaus significa "crittografia" in finlandese.</strong></p>
+            <h3>Standard di crittografia</h3>
             <ul>
-                <li><strong>Algoritmo:</strong> AES-256-GCM (cifratura autenticata)</li>
-                <li><strong>Derivazione chiave:</strong> PBKDF2-SHA512 con 800 000 iterazioni</li>
-                <li><strong>Salt:</strong> 32 byte casuali (256-bit)</li>
+                <li><strong>Algoritmo:</strong> AES-256-GCM (crittografia autenticata)</li>
+                <li><strong>Derivazione della chiave:</strong> PBKDF2-SHA512 con 800.000 iterazioni</li>
+                <li><strong>Salt:</strong> 32 byte casuali (256 bit)</li>
                 <li><strong>IV:</strong> 12 byte casuali</li>
-                <li><strong>Tag autenticazione:</strong> 16 byte (incluso)</li>
+                <li><strong>Tag di autenticazione:</strong> 16 byte (integrato)</li>
             </ul>
+
             <h2>Per PC o Android</h2>
             <h3>Installa sul tuo PC o dispositivo Android</h3>
             <p>Installa Salaus come Progressive Web App (PWA) sul tuo PC o dispositivo Android e usalo offline.</p>
 
             <ol>
                 <li>
-                    <strong>Apri nel Browser</strong><br>
+                    <strong>Apri nel browser</strong><br>
                     Apri questa pagina in un browser supportato (es. Chrome, Edge, Samsung Internet) tramite HTTPS.
                 </li>
                 <li>
-                    <strong>Installa l'App</strong><br>
-                    Clicca sul pulsante di installazione e poi premi installa.
+                    <strong>Installa l’app</strong><br>
+                    Clicca sul pulsante di installazione e conferma.
                 </li>
             </ol>
 
@@ -52,7 +53,7 @@
             <h3>Installa sul tuo dispositivo iOS</h3>
             <ol>
                 <li>
-                    <strong>Tocca i Tre Puntini</strong><br>
+                    <strong>Tocca i tre puntini</strong><br>
                     Tocca i tre puntini accanto alla barra di ricerca in Safari.
                 </li>
                 <li>
@@ -65,19 +66,19 @@
                 </li>
                 <li>
                     <strong>Aggiungi alla Schermata Home</strong><br>
-                    Seleziona Aggiungi alla schermata Home (quadrato con un + al centro).
+                    Seleziona Aggiungi alla Schermata Home (quadrato con un + al centro).
                 </li>
                 <li>
                     <strong>Abilita Web App</strong><br>
-                    Seleziona Apri come Web App.
+                    Seleziona “Apri come Web App”.
                 </li>
             </ol>
 
-            <p><small>Nota: Questa funzione non scarica il sito ma permette di visualizzarlo come un'app. Per utilizzarlo offline, apri il collegamento, carica la pagina e poi disconnettiti da internet.</small></p>
+            <p><small>Nota: Questa funzione non scarica il sito ma permette di aprirlo come app. Per usarlo offline, apri il collegamento, carica la pagina, poi disconnettiti da internet.</small></p>
         </main>
 
         <footer>
-            <p><a href="index.html?v=1.9.7">← Torna a Salaus</a></p>
+            <p><a href="index.html?v=1.9.8">← Torna a Salaus</a></p>
         </footer>
     </div>
 </body>
