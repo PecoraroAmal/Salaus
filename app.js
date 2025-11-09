@@ -1,4 +1,4 @@
-const MAX_FILE_SIZE = 0.5 * 1024;
+const MAX_FILE_SIZE = 0.5 * 1024 * 1024;
 let currentFile = null;
 let originalFileName = '';
 let originalFileExt = '';

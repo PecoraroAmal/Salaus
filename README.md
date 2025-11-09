@@ -12,8 +12,8 @@ No server. No tracking. No data leaves your device.
 - Fully offline
 - Open source – MIT License
 
-## Live Demo
-https://pecoraroamal.github.io/salaus/
+## Live
+https://pecoraroamal.github.io/Salaus/
 
 ## How to use
 1. Write or upload a .txt/.json file
