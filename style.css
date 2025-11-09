@@ -1,213 +1,516 @@
 :root {
-  --black: #000;
-  --white: #fff;
-  --gray: #666;
-  --border: #000;
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8f9fa;
+    --text-primary: #1a1a1a;
+    --text-secondary: #6b7280;
+    --accent: #2563eb;
+    --accent-hover: #1d4ed8;
+    --border: #e5e7eb;
+    --success: #10b981;
+    --error: #ef4444;
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-html, body {
-  height: 100%;
-  font-size: 16px;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background: var(--white);
-  color: var(--black);
-  line-height: 1.6;
+html {
+    font-size: 16px;
+    height: 100%;
 }
 
 body {
-  padding: 2rem 1rem;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: clamp(1rem, 3vw, 2rem);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .container {
-  width: 100%;
-  max-width: 900px;
-  margin: 0 auto;
+    max-width: 800px;
+    margin: 0 auto;
+    width: 100%;
 }
 
-/* --- Typography --- */
-h1, h2, h3 {
-  font-weight: 600;
-  margin-bottom: 1rem;
+/* Header */
+header {
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+    text-align: center;
 }
 
-h1 { font-size: 2rem; }
-p { margin-bottom: 1rem; }
+h1 {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+}
 
-/* --- Navigation / Tabs --- */
+h1 i {
+    margin-right: 0.5rem;
+    opacity: 0.9;
+}
+
+header p {
+    font-size: clamp(0.875rem, 2vw, 1rem);
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
 nav {
-  margin: 2rem 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
+    margin: 1.5rem 0;
 }
 
 nav a {
-  text-decoration: none;
-  color: var(--black);
-  font-weight: 600;
-  border: 1px solid var(--black);
-  padding: 0.6rem 1rem;
-  border-radius: 4px;
-  transition: background 0.2s;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
 }
 
 nav a:hover {
-  background: var(--black);
-  color: var(--white);
+    color: var(--accent-hover);
+    text-decoration: underline;
 }
 
+/* Tabs */
 .tabs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 0.75rem;
+    margin-bottom: 2rem;
 }
 
 .tab {
-  flex: 1;
-  text-align: center;
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  padding: 0.8rem;
-  cursor: pointer;
-  background: var(--white);
-  transition: background 0.2s;
+    background: var(--bg-primary);
+    border: 2px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 0.875rem 1.25rem;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    text-align: center;
+}
+
+.tab:hover:not(.active) {
+    border-color: var(--accent);
+    background: var(--bg-secondary);
 }
 
 .tab.active {
-  background: var(--black);
-  color: var(--white);
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
 }
 
-/* --- Inputs & Textareas --- */
+/* Form Elements */
 textarea,
-input[type="text"],
-input[type="password"] {
-  width: 100%;
-  padding: 0.8rem;
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  font-family: 'Courier New', monospace;
-  background: var(--white);
-  margin: 0.5rem 0 1rem;
+input[type="password"],
+input[type="text"] {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    border: 2px solid var(--border);
+    border-radius: var(--radius-md);
+    font-family: 'SF Mono', 'Monaco', 'Courier New', monospace;
+    font-size: 0.9375rem;
+    transition: var(--transition);
+    background: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+textarea:focus,
+input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
 textarea {
-  min-height: 200px;
-  resize: vertical;
+    min-height: 200px;
+    resize: vertical;
 }
 
-/* --- Drop zone --- */
+textarea[readonly] {
+    background: var(--bg-secondary);
+    cursor: not-allowed;
+}
+
+/* Drop Zone */
 .drop-zone {
-  border: 2px dashed var(--black);
-  border-radius: 6px;
-  text-align: center;
-  padding: 2rem 1rem;
-  cursor: pointer;
-  transition: background 0.2s;
+    border: 2px dashed var(--border);
+    padding: 3rem 1.5rem;
+    text-align: center;
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    transition: var(--transition);
+    background: var(--bg-secondary);
 }
 
+.drop-zone:hover,
 .drop-zone.dragover {
-  background: #f0f0f0;
+    border-color: var(--accent);
+    background: rgba(37, 99, 235, 0.05);
+}
+
+.drop-zone i {
+    color: var(--text-secondary);
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    display: block;
 }
 
 .drop-zone small {
-  display: block;
-  margin-top: 0.5rem;
-  color: var(--gray);
+    display: block;
+    margin-top: 0.75rem;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
 }
 
-/* --- Buttons --- */
-button,
-a.button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  background: var(--black);
-  color: var(--white);
-  border: none;
-  border-radius: 4px;
-  padding: 0.8rem 1.2rem;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  text-decoration: none;
-  transition: all 0.2s;
+.browse {
+    color: var(--accent);
+    font-weight: 600;
+    cursor: pointer;
 }
 
-button:hover,
-a.button:hover {
-  background: #222;
+.browse:hover {
+    text-decoration: underline;
 }
 
-/* Secondary buttons */
-button.secondary {
-  background: var(--white);
-  color: var(--black);
-  border: 1px solid var(--black);
+/* File Info */
+#file-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--bg-secondary);
+    padding: 1rem 1.25rem;
+    border-radius: var(--radius-md);
+    margin: 1rem 0;
+    border: 1px solid var(--border);
 }
 
-button.secondary:hover {
-  background: var(--black);
-  color: var(--white);
+#file-info button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-secondary);
+    transition: var(--transition);
+    padding: 0.25rem;
 }
 
-/* --- Footer --- */
-footer {
-  margin-top: auto;
-  border-top: 1px solid var(--border);
-  text-align: center;
-  padding: 1.5rem 0;
-  font-size: 0.9rem;
-  color: var(--gray);
+#file-info button:hover {
+    color: var(--error);
 }
 
-footer a {
-  color: var(--black);
-  text-decoration: underline;
+/* Password Wrapper */
+.password-wrapper {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1rem;
 }
 
-/* --- Toasts (notifications) --- */
+#password {
+    flex: 1;
+}
+
+#toggle-pass {
+    background: var(--bg-primary);
+    border: 2px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 0.875rem 1rem;
+    cursor: pointer;
+    color: var(--text-secondary);
+    transition: var(--transition);
+    min-width: 48px;
+}
+
+#toggle-pass:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+/* Actions */
+#action-section {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+button.primary {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 0.875rem 2rem;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: var(--radius-md);
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: var(--shadow-sm);
+}
+
+button.primary:hover {
+    background: var(--accent-hover);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
+}
+
+button.primary:active {
+    transform: translateY(0);
+}
+
+button.primary i {
+    font-size: 1.25rem;
+}
+
+/* Output Actions */
+.output-actions {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.output-actions button {
+    background: var(--bg-primary);
+    border: 2px solid var(--border);
+    color: var(--text-primary);
+    padding: 0.625rem 1.25rem;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.output-actions button:hover {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+}
+
+/* Utilities */
+.hidden {
+    display: none !important;
+}
+
+/* PWA Install */
+#pwa-install-container {
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+    z-index: 100;
+}
+
+#pwa-install-btn {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.25rem;
+    border-radius: var(--radius-md);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: var(--shadow-lg);
+    transition: var(--transition);
+}
+
+#pwa-install-btn:hover {
+    background: var(--accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+#pwa-install-btn i {
+    font-size: 1.25rem;
+}
+
+/* Toast */
 .toast {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  padding: 1rem 1.5rem;
-  border-radius: 6px;
-  border: 1px solid var(--black);
-  background: var(--white);
-  color: var(--black);
-  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-  transform: translateX(120%);
-  transition: transform 0.3s ease;
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+    z-index: 9999;
+    padding: 1rem 1.5rem;
+    border-radius: var(--radius-md);
+    font-weight: 500;
+    box-shadow: var(--shadow-lg);
+    min-width: 280px;
+    transform: translateX(120%);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .toast.show {
-  transform: translateX(0);
+    transform: translateX(0);
 }
 
-/* --- Responsive --- */
+.toast.success {
+    background: #ecfdf5;
+    color: var(--success);
+    border: 2px solid var(--success);
+}
+
+.toast.error {
+    background: #fef2f2;
+    color: var(--error);
+    border: 2px solid var(--error);
+}
+
+/* Buttons */
+.donation-button,
+.install-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--accent);
+    color: white;
+    padding: 0.875rem 1.5rem;
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    transition: var(--transition);
+    box-shadow: var(--shadow-sm);
+}
+
+.donation-button:hover,
+.install-button:hover {
+    background: var(--accent-hover);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+.donation-button i {
+    color: #ff6b6b;
+}
+
+/* Footer */
+footer {
+    margin-top: clamp(3rem, 6vw, 5rem);
+    padding: 2rem 0;
+    text-align: center;
+    font-size: 0.875rem;
+    border-top: 1px solid var(--border);
+}
+
+footer a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+footer small {
+    display: block;
+    margin-top: 1rem;
+    color: var(--text-secondary);
+}
+
+footer .footer-buttons {
+    margin: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
-  html { font-size: 15px; }
-  body { padding: 1rem; }
-  .tabs, nav { flex-direction: column; }
-  button, a.button { width: 100%; }
-  textarea { min-height: 150px; }
+    body {
+        padding: 1rem;
+    }
+
+    .tabs {
+        grid-template-columns: 1fr;
+    }
+
+    .output-actions {
+        justify-content: center;
+    }
+
+    .output-actions button {
+        flex: 1;
+        min-width: 120px;
+    }
+
+    .password-wrapper {
+        flex-direction: column;
+    }
+
+    #pwa-install-container {
+        top: 1rem;
+        right: 1rem;
+    }
+
+    #pwa-install-btn {
+        padding: 0.625rem 1rem;
+        font-size: 0.875rem;
+    }
+
+    .toast {
+        top: 1rem;
+        right: 1rem;
+        left: 1rem;
+        min-width: auto;
+    }
 }
 
 @media (max-width: 480px) {
-  html { font-size: 14px; }
-  h1 { font-size: 1.6rem; }
-  .container { padding: 0 0.5rem; }
-  .toast { width: calc(100% - 2rem); right: 1rem; }
+    #action-section {
+        flex-direction: column;
+    }
+
+    button.primary {
+        width: 100%;
+        justify-content: center;
+    }
+
+    footer .footer-buttons {
+        width: 100%;
+    }
+
+    .donation-button,
+    .install-button {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-primary: #0f172a;
+        --bg-secondary: #1e293b;
+        --text-primary: #f1f5f9;
+        --text-secondary: #94a3b8;
+        --border: #334155;
+    }
+
+    textarea[readonly] {
+        background: var(--bg-secondary);
+    }
 }
