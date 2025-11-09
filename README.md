@@ -1,4 +1,7 @@
-# Salaus 🔐
+# Salaus
+
+## Site
+https://pecoraroamal.github.io/Salaus/
 
 **Client-side AES-256-GCM encryption** – 100% in your browser.  
 No server. No tracking. No data leaves your device.
@@ -12,11 +15,9 @@ No server. No tracking. No data leaves your device.
 - Fully offline
 - Open source – MIT License
 
-## Live
-https://pecoraroamal.github.io/Salaus/
 
 ## How to use
-1.8 Write or upload a .txt/.json file
+Write or upload a .txt/.json file
 2. Enter a strong password
 3. Click **Encrypt** or **Decrypt**
 4. Copy or download result
