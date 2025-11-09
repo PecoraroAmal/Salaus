@@ -126,7 +126,7 @@ textarea[readonly] { background: var(--light-gray); }
     border: 2px solid var(--border);
     border-radius: 6px;
     padding: .8rem;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     cursor: pointer;
     color: var(--gray);
     transition: background .2s;
@@ -139,7 +139,7 @@ button.primary {
     color: var(--white);
     border: none;
     padding: .9rem 1.4rem;
-    font-size: 1.25rem;
+    font-size: 1.45rem;
     cursor: pointer;
     border-radius: 6px;
     margin: .5rem .25rem;
@@ -200,7 +200,7 @@ button.primary i { margin-right: .4rem; }
     box-shadow: 0 6px 16px rgba(0,0,0,.3);
 }
 
-#pwa-install-btn i { font-size: 1.2rem; }
+#pwa-install-btn i { font-size: 1.4rem; }
 
 .toast {
     position: fixed;

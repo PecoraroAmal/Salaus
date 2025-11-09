@@ -4,8 +4,15 @@ let originalFileName = '';
 let originalFileExt = '';
 let deferredPrompt = null;
 
-document.addEventListener('DOMContentLoaded', () => {
-    const $ = id => document.getElementById(id);
+const $ = id => document.getElementById(id);
+
+async function initApp() {
+    if (!window.SalausCrypto) {
+        $('message').textContent = 'Crypto engine failed to load';
+        $('message').className = 'toast error show';
+        return;
+    }
+
     const textMode = $('text-mode');
     const fileMode = $('file-mode');
     const dropZone = $('drop-zone');
@@ -23,7 +30,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const downloadTxt = $('download-txt');
     const downloadJson = $('download-json');
     const toast = $('message');
-    const pwaHeaderBtn = $('pwa-install-btn');
     const pwaHeaderContainer = $('pwa-install-container');
     const pwaFooterBtn = $('pwa-install-btn-footer');
 
@@ -38,16 +44,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     if (dropZone && fileInput) {
-        ['dragover', 'dragenter'].forEach(ev => dropZone.addEventListener(ev, e => {
-            e.preventDefault();
-            dropZone.classList.add('dragover');
-        }));
+        ['dragover', 'dragenter'].forEach(ev => dropZone.addEventListener(ev, e => { e.preventDefault(); dropZone.classList.add('dragover'); }));
         ['dragleave', 'dragend'].forEach(ev => dropZone.addEventListener(ev, () => dropZone.classList.remove('dragover')));
-        dropZone.addEventListener('drop', e => {
-            e.preventDefault();
-            dropZone.classList.remove('dragover');
-            if (e.dataTransfer.files[0]) handleFile(e.dataTransfer.files[0]);
-        });
+        dropZone.addEventListener('drop', e => { e.preventDefault(); dropZone.classList.remove('dragover'); if (e.dataTransfer.files[0]) handleFile(e.dataTransfer.files[0]); });
         dropZone.addEventListener('click', () => fileInput.click());
         fileInput.addEventListener('change', () => { if (fileInput.files[0]) handleFile(fileInput.files[0]); });
     }
@@ -63,12 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
         fileInfo.classList.remove('hidden');
     }
 
-    if (removeFile) removeFile.addEventListener('click', () => {
-        currentFile = null;
-        fileInfo.classList.add('hidden');
-        fileInput.value = '';
-    });
-
+    if (removeFile) removeFile.addEventListener('click', () => { currentFile = null; fileInfo.classList.add('hidden'); fileInput.value = ''; });
     if (togglePass) togglePass.addEventListener('click', () => {
         const type = passwordIn.type === 'password' ? 'text' : 'password';
         passwordIn.type = type;
@@ -160,12 +154,25 @@ document.addEventListener('DOMContentLoaded', () => {
         if (pwaFooterBtn) pwaFooterBtn.style.display = 'none';
     };
 
-    if (pwaHeaderBtn) pwaHeaderBtn.addEventListener('click', installPWA);
-    if (pwaFooterBtn) pwaFooterBtn.addEventListener('click', installPWA);
+    document.querySelectorAll('#pwa-install-btn, #pwa-install-btn-footer').forEach(btn => btn.addEventListener('click', installPWA));
 
     window.addEventListener('appinstalled', () => {
         if (pwaHeaderContainer) pwaHeaderContainer.classList.add('hidden');
         if (pwaFooterBtn) pwaFooterBtn.style.display = 'none';
         showToast('Salaus is now installed!', 'success');
     });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    if (window.SalausCrypto) {
+        initApp();
+    } else {
+        const check = setInterval(() => {
+            if (window.SalausCrypto) {
+                clearInterval(check);
+                initApp();
+            }
+        }, 50);
+        setTimeout(() => clearInterval(check), 5000);
+    }
 });
