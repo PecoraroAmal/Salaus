@@ -16,7 +16,7 @@ body {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     background: var(--white);
     color: var(--black);
-    line-height: 1.7;
+    line-height: 1.87;
     min-height: 100vh;
     padding: 2rem 1rem 0;
 }
@@ -30,7 +30,7 @@ body {
 
 @media (max-width: 768px) {
     .container { max-width: 100%; padding: 0 1rem; }
-    body { padding: 1.7rem 0 0; }
+    body { padding: 1.87rem 0 0; }
 }
 
 header { position: relative; margin-bottom: 2rem; }
@@ -40,14 +40,14 @@ h1 i { margin-right: .5rem; }
 
 header p { font-size: .95rem; opacity: .9; margin: .4rem 0 1rem; }
 
-nav { margin: 1.7rem 0; }
+nav { margin: 1.87rem 0; }
 nav a { color: var(--black); text-decoration: none; font-weight: 600; }
 nav a:hover { text-decoration: underline; }
 
 .tabs {
     display: flex;
     gap: 2rem;
-    margin-bottom: 1.7rem;
+    margin-bottom: 1.87rem;
 }
 
 .tab {
@@ -55,7 +55,7 @@ nav a:hover { text-decoration: underline; }
     background: var(--white);
     border: 2px solid var(--border);
     border-radius: 6px;
-    padding: 1rem 1.7rem;
+    padding: 1rem 1.87rem;
     font-size: 1rem;
     cursor: pointer;
     transition: all .2s;
@@ -109,7 +109,7 @@ textarea[readonly] { background: var(--light-gray); }
     margin: .5rem 0;
 }
 
-#file-info button { background: none; border: none; font-size: 1.3rem; cursor: pointer; }
+#file-info button { background: none; border: none; font-size: 1.83rem; cursor: pointer; }
 
 .password-wrapper {
     display: flex;
@@ -137,14 +137,14 @@ textarea[readonly] { background: var(--light-gray); }
     display: flex;
     justify-content: center;
     gap: 1rem;
-    margin: 1.7rem 0;
+    margin: 1.87rem 0;
 }
 
 button.primary {
     background: var(--black);
     color: var(--white);
     border: none;
-    padding: .75rem 1.2rem;
+    padding: .75rem 1.82rem;
     font-size: 1rem;
     cursor: pointer;
     border-radius: 6px;
@@ -155,7 +155,7 @@ button.primary {
 }
 
 button.primary:hover { background: #333; }
-button.primary i { font-size: 1.2rem; }
+button.primary i { font-size: 1.82rem; }
 
 .output-actions {
     margin-top: .5rem;
@@ -208,14 +208,14 @@ button.primary i { font-size: 1.2rem; }
     box-shadow: 0 6px 16px rgba(0,0,0,.3);
 }
 
-#pwa-install-btn i { font-size: 1.7rem; }
+#pwa-install-btn i { font-size: 1.87rem; }
 
 .toast {
     position: fixed;
     top: 1rem;
     right: 1rem;
     z-index: 9999;
-    padding: 1rem 1.7rem;
+    padding: 1rem 1.87rem;
     border-radius: 8px;
     font-weight: 600;
     box-shadow: 0 4px 12px rgba(0,0,0,.15);
@@ -235,7 +235,7 @@ button.primary i { font-size: 1.2rem; }
     gap: .5rem;
     background: var(--black);
     color: var(--white);
-    padding: .8rem 1.7rem;
+    padding: .8rem 1.87rem;
     border-radius: 6px;
     text-decoration: none;
     font-weight: 600;
@@ -249,7 +249,7 @@ button.primary i { font-size: 1.2rem; }
 
 footer {
     margin-top: 4rem;
-    padding: 2rem 0 1.7rem;
+    padding: 2rem 0 1.87rem;
     text-align: center;
     font-size: .9rem;
     border-top: 2px solid var(--border);
@@ -268,7 +268,7 @@ footer .footer-buttons {
 }
 
 @media (max-width: 768px) {
-    h1 { font-size: 1.9rem; }
+    h1 { font-size: 1.89rem; }
     .tabs { flex-direction: column; gap: .5rem; }
     .tab { border-radius: 6px; }
     .output-actions { text-align: center; }
@@ -277,6 +277,6 @@ footer .footer-buttons {
     #pwa-install-container { top: .5rem; right: .5rem; }
     #pwa-install-btn { padding: .6rem .9rem; font-size: .9rem; }
     #action-section { gap: .8rem; }
-    button.primary { padding: .7rem 1.1rem; font-size: 1rem; }
-    footer { margin-top: 3rem; padding: 1.7rem 0; }
+    button.primary { padding: .7rem 1.81rem; font-size: 1rem; }
+    footer { margin-top: 3rem; padding: 1.87rem 0; }
 }

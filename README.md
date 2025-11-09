@@ -16,7 +16,7 @@ No server. No tracking. No data leaves your device.
 https://pecoraroamal.github.io/Salaus/
 
 ## How to use
-1. Write or upload a .txt/.json file
+1.8 Write or upload a .txt/.json file
 2. Enter a strong password
 3. Click **Encrypt** or **Decrypt**
 4. Copy or download result
