@@ -591,7 +591,13 @@ footer .footer-buttons {
 .hidden {
     display: none !important;
 }
-
+/* ========================================
+   FINNISH BLUE TEXT (Salaus meaning)
+   ======================================== */
+.finnish-blue {
+    color: #0055A4;
+    font-weight: 700;
+}
 /* ========================================
    RESPONSIVE
    ======================================== */
