@@ -1,20 +1,20 @@
 const CACHE_NAME = 'salaus-v4';
 const FILES_TO_CACHE = [
-  '/',
-  '/index.html?v=1',
-  '/style.css?v=1',
-  '/salaus.js?v=1',
-  '/app.js?v=1',
-  '/site.webmanifest',
-  '/apple-touch-icon.png',
-  '/favicon.ico',
-  '/favicon.svg',
-  '/favicon-96x96.png',
-  '/web-app-manifest-192x192.png',
-  '/web-app-manifest-512x512.png',
-  '/cookie-privacy.html',
-  '/info.html',
-  '/informazioni.html',
+  '/Salaus/',
+  '/Salaus/index.html?v=1.9',
+  '/Salaus/style.css?v=1.9',
+  '/Salaus/salaus.js?v=1.9',
+  '/Salaus/app.js?v=1.9',
+  '/Salaus/site.webmanifest',
+  '/Salaus/apple-touch-icon.png',
+  '/Salaus/favicon.ico',
+  '/Salaus/favicon.svg',
+  '/Salaus/favicon-96x96.png',
+  '/Salaus/web-app-manifest-192x192.png',
+  '/Salaus/web-app-manifest-512x512.png',
+  '/Salaus/cookie-privacy.html',
+  '/Salaus/info.html',
+  '/Salaus/informazioni.html',
   'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css'
 ];
 
@@ -35,9 +35,13 @@ self.addEventListener('activate', e => {
 });
 
 self.addEventListener('fetch', e => {
+  if (e.request.url.startsWith('http://')) {
+    e.respondWith(fetch(e.request.url.replace('http://', 'https://')));
+    return;
+  }
   if (e.request.mode === 'navigate') {
     e.respondWith(
-      fetch(e.request).catch(() => caches.match('/index.html'))
+      fetch(e.request).catch(() => caches.match('/Salaus/index.html?v=1.9'))
     );
   } else {
     e.respondWith(
