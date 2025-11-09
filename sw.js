@@ -1,11 +1,11 @@
 const CACHE_NAME = 'salaus-v4';
 const FILES_TO_CACHE = [
   '/Salaus/',
-  '/Salaus/index.html?v=1.9.5',
-  '/Salaus/style.css?v=1.9.5',
-  '/Salaus/salaus.js?v=1.9.5',
-  '/Salaus/app.js?v=1.9.5',
-  '/Salaus/site.webmanifest',
+  '/Salaus/index.html?v=1.9.6',
+  '/Salaus/style.css?v=1.9.6',
+  '/Salaus/salaus.js?v=1.9.6',
+  '/Salaus/app.js?v=1.9.6',
+  '/Salaus/manifest.json',
   '/Salaus/apple-touch-icon.png',
   '/Salaus/favicon.ico',
   '/Salaus/favicon.svg',
@@ -41,7 +41,7 @@ self.addEventListener('fetch', e => {
   }
   if (e.request.mode === 'navigate') {
     e.respondWith(
-      fetch(e.request).catch(() => caches.match('/Salaus/index.html?v=1.9.5'))
+      fetch(e.request).catch(() => caches.match('/Salaus/index.html?v=1.9.6'))
     );
   } else {
     e.respondWith(
