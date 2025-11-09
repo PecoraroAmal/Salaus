@@ -28,7 +28,6 @@ body {
     position: relative;
 }
 
-/* Mobile: full width */
 @media (max-width: 768px) {
     .container { max-width: 100%; padding: 0 1rem; }
     body { padding: 1.5rem 0 0; }
@@ -126,7 +125,7 @@ textarea[readonly] { background: var(--light-gray); }
     border: 2px solid var(--border);
     border-radius: 6px;
     padding: .8rem;
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     cursor: pointer;
     color: var(--gray);
     transition: background .2s;
@@ -134,20 +133,29 @@ textarea[readonly] { background: var(--light-gray); }
 
 #toggle-pass:hover { background: var(--light-gray); }
 
+#action-section {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
 button.primary {
     background: var(--black);
     color: var(--white);
     border: none;
-    padding: .9rem 1.4rem;
-    font-size: 1.45rem;
+    padding: .75rem 1.2rem;
+    font-size: 1rem;
     cursor: pointer;
     border-radius: 6px;
-    margin: .5rem .25rem;
     transition: background .2s;
+    display: flex;
+    align-items: center;
+    gap: .4rem;
 }
 
 button.primary:hover { background: #333; }
-button.primary i { margin-right: .4rem; }
+button.primary i { font-size: 1.2rem; }
 
 .output-actions {
     margin-top: .5rem;
@@ -200,7 +208,7 @@ button.primary i { margin-right: .4rem; }
     box-shadow: 0 6px 16px rgba(0,0,0,.3);
 }
 
-#pwa-install-btn i { font-size: 1.4rem; }
+#pwa-install-btn i { font-size: 1.5rem; }
 
 .toast {
     position: fixed;
@@ -227,7 +235,7 @@ button.primary i { margin-right: .4rem; }
     gap: .5rem;
     background: var(--black);
     color: var(--white);
-    padding: .8rem 1.4rem;
+    padding: .8rem 1.5rem;
     border-radius: 6px;
     text-decoration: none;
     font-weight: 600;
@@ -235,13 +243,10 @@ button.primary i { margin-right: .4rem; }
 }
 
 .donation-button:hover,
-.install-button:hover {
-    background: #333;
-}
+.install-button:hover { background: #333; }
 
 .donation-button i { color: #ff4444; }
 
-/* FOOTER SEMPRE ATTACCATO SOTTO AL CONTENUTO */
 footer {
     margin-top: 4rem;
     padding: 2rem 0 1.5rem;
@@ -262,7 +267,6 @@ footer .footer-buttons {
     align-items: center;
 }
 
-/* Mobile */
 @media (max-width: 768px) {
     h1 { font-size: 1.9rem; }
     .tabs { flex-direction: column; gap: .5rem; }
@@ -272,5 +276,7 @@ footer .footer-buttons {
     .password-wrapper { flex-direction: column; gap: .5rem; align-items: stretch; }
     #pwa-install-container { top: .5rem; right: .5rem; }
     #pwa-install-btn { padding: .6rem .9rem; font-size: .9rem; }
+    #action-section { gap: .8rem; }
+    button.primary { padding: .7rem 1.1rem; font-size: 1rem; }
     footer { margin-top: 3rem; padding: 1.5rem 0; }
 }
