@@ -1,0 +1,276 @@
+:root {
+    --black: #000;
+    --white: #fff;
+    --gray: #555;
+    --light-gray: #f5f5f5;
+    --red: #d32f2f;
+    --green: #2e7d32;
+    --border: #000;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { height: 100%; }
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--white);
+    color: var(--black);
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: 2rem 1rem 0;
+}
+
+.container {
+    width: 100%;
+    max-width: 65%;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* Mobile: full width */
+@media (max-width: 768px) {
+    .container { max-width: 100%; padding: 0 1rem; }
+    body { padding: 1.5rem 0 0; }
+}
+
+header { position: relative; margin-bottom: 2rem; }
+
+h1 { font-size: 2.2rem; margin-bottom: .5rem; }
+h1 i { margin-right: .5rem; }
+
+header p { font-size: .95rem; opacity: .9; margin: .4rem 0 1rem; }
+
+nav { margin: 1.5rem 0; }
+nav a { color: var(--black); text-decoration: none; font-weight: 600; }
+nav a:hover { text-decoration: underline; }
+
+.tabs {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.tab {
+    flex: 1;
+    background: var(--white);
+    border: 2px solid var(--border);
+    border-radius: 6px;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all .2s;
+}
+
+.tab.active {
+    background: var(--black);
+    color: var(--white);
+    border-color: var(--black);
+}
+
+.tab:hover:not(.active) { background: var(--light-gray); }
+
+textarea,
+input[type="password"],
+input[type="text"] {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid var(--border);
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 1rem;
+    margin: .5rem 0;
+    transition: none;
+}
+
+textarea { min-height: 220px; resize: vertical; }
+textarea[readonly] { background: var(--light-gray); }
+
+.drop-zone {
+    border: 3px dashed var(--border);
+    padding: 2.5rem 1rem;
+    text-align: center;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background .2s;
+}
+
+.drop-zone.dragover { background: #eee; }
+.drop-zone i { color: var(--gray); margin-bottom: .5rem; font-size: 3rem; }
+.drop-zone small { display: block; margin-top: .5rem; opacity: .8; }
+.browse { color: var(--black); font-weight: 600; text-decoration: underline; cursor: pointer; }
+
+#file-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--light-gray);
+    padding: .6rem 1rem;
+    border-radius: 6px;
+    margin: .5rem 0;
+}
+
+#file-info button { background: none; border: none; font-size: 1.3rem; cursor: pointer; }
+
+.password-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: .5rem;
+}
+
+#password { flex-grow: 1; padding: 1rem; }
+
+#toggle-pass {
+    background: none;
+    border: 2px solid var(--border);
+    border-radius: 6px;
+    padding: .8rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: var(--gray);
+    transition: background .2s;
+}
+
+#toggle-pass:hover { background: var(--light-gray); }
+
+button.primary {
+    background: var(--black);
+    color: var(--white);
+    border: none;
+    padding: .9rem 1.4rem;
+    font-size: 1.05rem;
+    cursor: pointer;
+    border-radius: 6px;
+    margin: .5rem .25rem;
+    transition: background .2s;
+}
+
+button.primary:hover { background: #333; }
+button.primary i { margin-right: .4rem; }
+
+.output-actions {
+    margin-top: .5rem;
+    text-align: right;
+}
+
+.output-actions button {
+    background: none;
+    border: 2px solid var(--black);
+    color: var(--black);
+    padding: .6rem 1rem;
+    margin-left: .5rem;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.output-actions button:hover {
+    background: var(--black);
+    color: var(--white);
+}
+
+.hidden { display: none !important; }
+
+#pwa-install-container {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 100;
+}
+
+#pwa-install-btn {
+    background: var(--black);
+    color: var(--white);
+    border: none;
+    padding: .7rem 1rem;
+    border-radius: 6px;
+    font-size: .95rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,.2);
+    transition: all .3s ease;
+}
+
+#pwa-install-btn:hover {
+    background: #333;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,.3);
+}
+
+#pwa-install-btn i { font-size: 1.1rem; }
+
+.toast {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 9999;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(0,0,0,.15);
+    min-width: 280px;
+    transform: translateX(120%);
+    transition: transform .4s ease;
+}
+
+.toast.show { transform: translateX(0); }
+.toast.success { background: #e8f5e9; color: var(--green); border: 2px solid var(--green); }
+.toast.error { background: #ffebee; color: var(--red); border: 2px solid var(--red); }
+
+.donation-button,
+.install-button {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    background: var(--black);
+    color: var(--white);
+    padding: .8rem 1.4rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background .2s;
+}
+
+.donation-button:hover,
+.install-button:hover {
+    background: #333;
+}
+
+.donation-button i { color: #ff4444; }
+
+/* FOOTER SEMPRE ATTACCATO SOTTO AL CONTENUTO */
+footer {
+    margin-top: 4rem;
+    padding: 2rem 0 1.5rem;
+    text-align: center;
+    font-size: .9rem;
+    border-top: 2px solid var(--border);
+    background: var(--white);
+}
+
+footer a { color: var(--black); text-decoration: underline; }
+footer small { display: block; margin-top: 1rem; opacity: .7; }
+
+footer .footer-buttons {
+    margin: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    h1 { font-size: 1.9rem; }
+    .tabs { flex-direction: column; gap: .5rem; }
+    .tab { border-radius: 6px; }
+    .output-actions { text-align: center; }
+    .output-actions button { display: block; width: 100%; margin: .4rem 0; }
+    .password-wrapper { flex-direction: column; gap: .5rem; align-items: stretch; }
+    #pwa-install-container { top: .5rem; right: .5rem; }
+    #pwa-install-btn { padding: .6rem .9rem; font-size: .9rem; }
+    footer { margin-top: 3rem; padding: 1.5rem 0; }
+}

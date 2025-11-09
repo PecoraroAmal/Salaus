@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salaus - Encrypt & Decrypt locally</title>
+    <meta name="description" content="AES-256-GCM client-side encryption – 100% in your browser • Compatible with Beskytter™">
+    
+    <!-- Favicon & Icons -->
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="favicon-96x96.png" sizes="96x96">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+    
+    <!-- PWA -->
+    <meta name="theme-color" content="#000000">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Salaus">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css?v=1.0">
+     <script>
+        if (window.location.pathname + window.location.search !== '/Salaus/index.html?v=1.0') {
+            window.location.replace('/Salaus/index.html?v=1.0');
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-lock"></i> Salaus</h1>
+            <nav>
+                <a href="info.html?v=1.0">How it works (EN)</a> • 
+                <a href="informazioni.html?v=1.0">Come funziona (IT)</a>
+            </nav>
+        </header>
+
+        <main>
+            <section id="input-section">
+                <div class="tabs">
+                    <button class="tab active" data-mode="text">Text</button>
+                    <button class="tab" data-mode="file">File (.txt / .json)</button>
+                </div>
+
+                <div id="text-mode">
+                    <textarea id="plain-text" placeholder="Enter text to encrypt or paste encrypted data..."></textarea>
+                </div>
+
+                <div id="file-mode" class="hidden">
+                    <div id="drop-zone" class="drop-zone">
+                        <i class="fas fa-cloud-upload-alt fa-3x"></i>
+                        <p>Drag & drop a .txt or .json file here or <span class="browse">click to select</span></p>
+                        <small>Max 0.5 MB • Only .txt and .json allowed</small>
+                        <input type="file" id="file-input" accept=".txt,.json" hidden>
+                    </div>
+                    <div id="file-info" class="hidden">
+                        <span id="file-name"></span>
+                        <button id="remove-file"><i class="fas fa-times"></i></button>
+                    </div>
+                </div>
+            </section>
+
+            <section id="password-section">
+                <label>Password</label>
+                <div class="password-wrapper">
+                    <input type="password" id="password" placeholder="Enter strong password" autocomplete="off">
+                    <button type="button" id="toggle-pass"><i class="fas fa-eye"></i></button>
+                </div>
+            </section>
+
+            <section id="action-section">
+                <button id="encrypt-btn" class="primary"><i class="fas fa-lock"></i> Encrypt</button>
+                <button id="decrypt-btn" class="primary"><i class="fas fa-unlock"></i> Decrypt</button>
+            </section>
+
+            <section id="output-section" class="hidden">
+                <label>Result</label>
+                <textarea id="result-text" readonly></textarea>
+                <div class="output-actions">
+                    <button id="copy-result"><i class="fas fa-copy"></i> Copy</button>
+                    <button id="download-txt"><i class="fas fa-file-alt"></i> Save as .txt</button>
+                    <button id="download-json"><i class="fas fa-file-code"></i> Save as .json</button>
+                </div>
+            </section>
+
+            <div id="message" class="toast hidden"></div>
+        </main>
+
+        <footer>
+            
+            <div class="footer-buttons">
+                <a href="https://www.paypal.com/donate/?hosted_button_id=5Z5N9EBJERXC6" target="_blank" class="donation-button">
+                    <i class="fas fa-heart"></i> Support Salaus
+                </a>
+                
+                <button id="pwa-install-btn-footer" class="install-button" title="Install Salaus as an app">
+                    <i class="fas fa-download"></i> Install Salaus
+                </button>
+            </div>
+            
+            <p>
+                <a href="cookie-privacy.html">Cookie & Privacy</a> • 
+                <a href="https://github.com/pecoraroamal/salaus" target="_blank">GitHub Repository</a>
+            </p>
+            <small>© 2025 Salaus 1.0 – Open Source • MIT License • 
+                <a href="https://pecoraroamal.github.io/Beskytter" target="_blank" rel="noopener">Beskytter™</a>
+            </small>
+        </footer>
+    </div>
+
+    <script src="salaus.js?v=1.0"></script>
+    <script src="app.js?v=1.0"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js?v=1.0');
+            });
+        }
+    </script>
+</body>
+</html>
