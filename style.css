@@ -1,20 +1,15 @@
 :root {
-    --bg-primary: #ffffff;
-    --bg-secondary: #f8f9fa;
-    --text-primary: #1a1a1a;
-    --text-secondary: #6b7280;
-    --accent: #2563eb;
-    --accent-hover: #1d4ed8;
+    --black: #000000;
+    --white: #ffffff;
+    --gray-light: #f5f5f5;
+    --gray-mid: #9ca3af;
+    --gray-dark: #374151;
     --border: #e5e7eb;
-    --success: #10b981;
-    --error: #ef4444;
     --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    --radius-sm: 8px;
-    --radius-md: 12px;
-    --radius-lg: 16px;
-    --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --radius: 12px;
+    --transition: all 0.2s ease;
 }
 
 * {
@@ -30,13 +25,12 @@ html {
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    background: var(--bg-primary);
-    color: var(--text-primary);
+    background: var(--white);
+    color: var(--black);
     line-height: 1.6;
     min-height: 100vh;
     padding: clamp(1rem, 3vw, 2rem);
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 }
 
 .container {
@@ -60,12 +54,11 @@ h1 {
 
 h1 i {
     margin-right: 0.5rem;
-    opacity: 0.9;
 }
 
 header p {
     font-size: clamp(0.875rem, 2vw, 1rem);
-    color: var(--text-secondary);
+    color: var(--gray-dark);
     max-width: 600px;
     margin: 0 auto;
 }
@@ -75,46 +68,43 @@ nav {
 }
 
 nav a {
-    color: var(--accent);
+    color: var(--black);
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 600;
     transition: var(--transition);
 }
 
 nav a:hover {
-    color: var(--accent-hover);
-    text-decoration: underline;
+    opacity: 0.7;
 }
 
 /* Tabs */
 .tabs {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
     gap: 0.75rem;
     margin-bottom: 2rem;
 }
 
 .tab {
-    background: var(--bg-primary);
-    border: 2px solid var(--border);
-    border-radius: var(--radius-md);
-    padding: 0.875rem 1.25rem;
-    font-size: 0.9375rem;
-    font-weight: 500;
+    background: var(--white);
+    border: 2px solid var(--black);
+    border-radius: var(--radius);
+    padding: clamp(0.75rem, 2vw, 1rem) clamp(1rem, 3vw, 1.5rem);
+    font-size: clamp(0.875rem, 2vw, 1rem);
+    font-weight: 600;
     cursor: pointer;
     transition: var(--transition);
     text-align: center;
 }
 
 .tab:hover:not(.active) {
-    border-color: var(--accent);
-    background: var(--bg-secondary);
+    background: var(--gray-light);
 }
 
 .tab.active {
-    background: var(--accent);
-    color: white;
-    border-color: var(--accent);
+    background: var(--black);
+    color: var(--white);
 }
 
 /* Form Elements */
@@ -122,53 +112,52 @@ textarea,
 input[type="password"],
 input[type="text"] {
     width: 100%;
-    padding: 0.875rem 1rem;
+    padding: clamp(0.75rem, 2vw, 1rem);
     border: 2px solid var(--border);
-    border-radius: var(--radius-md);
+    border-radius: var(--radius);
     font-family: 'SF Mono', 'Monaco', 'Courier New', monospace;
-    font-size: 0.9375rem;
+    font-size: clamp(0.875rem, 2vw, 1rem);
     transition: var(--transition);
-    background: var(--bg-primary);
-    color: var(--text-primary);
+    background: var(--white);
+    color: var(--black);
 }
 
 textarea:focus,
 input:focus {
     outline: none;
-    border-color: var(--accent);
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    border-color: var(--black);
 }
 
 textarea {
-    min-height: 200px;
+    min-height: clamp(180px, 30vh, 220px);
     resize: vertical;
 }
 
 textarea[readonly] {
-    background: var(--bg-secondary);
+    background: var(--gray-light);
     cursor: not-allowed;
 }
 
 /* Drop Zone */
 .drop-zone {
     border: 2px dashed var(--border);
-    padding: 3rem 1.5rem;
+    padding: clamp(2rem, 5vw, 3rem) clamp(1rem, 3vw, 1.5rem);
     text-align: center;
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius);
     cursor: pointer;
     transition: var(--transition);
-    background: var(--bg-secondary);
+    background: var(--gray-light);
 }
 
 .drop-zone:hover,
 .drop-zone.dragover {
-    border-color: var(--accent);
-    background: rgba(37, 99, 235, 0.05);
+    border-color: var(--black);
+    background: #eeeeee;
 }
 
 .drop-zone i {
-    color: var(--text-secondary);
-    font-size: 3rem;
+    color: var(--gray-mid);
+    font-size: clamp(2.5rem, 6vw, 3rem);
     margin-bottom: 1rem;
     display: block;
 }
@@ -176,17 +165,14 @@ textarea[readonly] {
 .drop-zone small {
     display: block;
     margin-top: 0.75rem;
-    color: var(--text-secondary);
-    font-size: 0.875rem;
+    color: var(--gray-dark);
+    font-size: clamp(0.75rem, 2vw, 0.875rem);
 }
 
 .browse {
-    color: var(--accent);
+    color: var(--black);
     font-weight: 600;
     cursor: pointer;
-}
-
-.browse:hover {
     text-decoration: underline;
 }
 
@@ -195,25 +181,34 @@ textarea[readonly] {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: var(--bg-secondary);
-    padding: 1rem 1.25rem;
-    border-radius: var(--radius-md);
+    gap: 1rem;
+    background: var(--gray-light);
+    padding: clamp(0.75rem, 2vw, 1rem) clamp(1rem, 3vw, 1.25rem);
+    border-radius: var(--radius);
     margin: 1rem 0;
     border: 1px solid var(--border);
+}
+
+#file-info span {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 #file-info button {
     background: none;
     border: none;
-    font-size: 1.5rem;
+    font-size: clamp(1.25rem, 3vw, 1.5rem);
     cursor: pointer;
-    color: var(--text-secondary);
+    color: var(--gray-mid);
     transition: var(--transition);
     padding: 0.25rem;
+    flex-shrink: 0;
 }
 
 #file-info button:hover {
-    color: var(--error);
+    color: var(--black);
 }
 
 /* Password Wrapper */
@@ -228,48 +223,48 @@ textarea[readonly] {
 }
 
 #toggle-pass {
-    background: var(--bg-primary);
+    background: var(--white);
     border: 2px solid var(--border);
-    border-radius: var(--radius-md);
-    padding: 0.875rem 1rem;
+    border-radius: var(--radius);
+    padding: clamp(0.75rem, 2vw, 1rem);
     cursor: pointer;
-    color: var(--text-secondary);
+    color: var(--gray-dark);
     transition: var(--transition);
     min-width: 48px;
 }
 
 #toggle-pass:hover {
-    border-color: var(--accent);
-    color: var(--accent);
+    border-color: var(--black);
+    color: var(--black);
 }
 
 /* Actions */
 #action-section {
     display: flex;
     justify-content: center;
-    gap: 1rem;
+    gap: clamp(0.75rem, 2vw, 1rem);
     margin: 2rem 0;
+    flex-wrap: wrap;
 }
 
 button.primary {
-    background: var(--accent);
-    color: white;
+    background: var(--black);
+    color: var(--white);
     border: none;
-    padding: 0.875rem 2rem;
-    font-size: 0.9375rem;
+    padding: clamp(0.75rem, 2vw, 0.875rem) clamp(1.5rem, 4vw, 2rem);
+    font-size: clamp(0.875rem, 2vw, 1rem);
     font-weight: 600;
     cursor: pointer;
-    border-radius: var(--radius-md);
+    border-radius: var(--radius);
     transition: var(--transition);
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 0.5rem;
-    box-shadow: var(--shadow-sm);
 }
 
 button.primary:hover {
-    background: var(--accent-hover);
-    box-shadow: var(--shadow-md);
+    opacity: 0.85;
     transform: translateY(-1px);
 }
 
@@ -278,7 +273,7 @@ button.primary:active {
 }
 
 button.primary i {
-    font-size: 1.25rem;
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
 }
 
 /* Output Actions */
@@ -291,21 +286,20 @@ button.primary i {
 }
 
 .output-actions button {
-    background: var(--bg-primary);
-    border: 2px solid var(--border);
-    color: var(--text-primary);
-    padding: 0.625rem 1.25rem;
-    border-radius: var(--radius-sm);
+    background: var(--white);
+    border: 2px solid var(--black);
+    color: var(--black);
+    padding: clamp(0.5rem, 1.5vw, 0.625rem) clamp(1rem, 2.5vw, 1.25rem);
+    border-radius: var(--radius);
     cursor: pointer;
-    font-size: 0.875rem;
-    font-weight: 500;
+    font-size: clamp(0.8125rem, 2vw, 0.875rem);
+    font-weight: 600;
     transition: var(--transition);
 }
 
 .output-actions button:hover {
-    background: var(--accent);
-    color: white;
-    border-color: var(--accent);
+    background: var(--black);
+    color: var(--white);
 }
 
 /* Utilities */
@@ -316,18 +310,18 @@ button.primary i {
 /* PWA Install */
 #pwa-install-container {
     position: fixed;
-    top: 1.5rem;
-    right: 1.5rem;
+    top: clamp(1rem, 2vw, 1.5rem);
+    right: clamp(1rem, 2vw, 1.5rem);
     z-index: 100;
 }
 
 #pwa-install-btn {
-    background: var(--accent);
-    color: white;
+    background: var(--black);
+    color: var(--white);
     border: none;
-    padding: 0.75rem 1.25rem;
-    border-radius: var(--radius-md);
-    font-size: 0.9375rem;
+    padding: clamp(0.625rem, 1.5vw, 0.75rem) clamp(1rem, 2.5vw, 1.25rem);
+    border-radius: var(--radius);
+    font-size: clamp(0.8125rem, 2vw, 0.9375rem);
     font-weight: 600;
     cursor: pointer;
     display: inline-flex;
@@ -338,28 +332,28 @@ button.primary i {
 }
 
 #pwa-install-btn:hover {
-    background: var(--accent-hover);
+    opacity: 0.85;
     transform: translateY(-2px);
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
 }
 
 #pwa-install-btn i {
-    font-size: 1.25rem;
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
 }
 
 /* Toast */
 .toast {
     position: fixed;
-    top: 1.5rem;
-    right: 1.5rem;
+    top: clamp(1rem, 2vw, 1.5rem);
+    right: clamp(1rem, 2vw, 1.5rem);
     z-index: 9999;
-    padding: 1rem 1.5rem;
-    border-radius: var(--radius-md);
-    font-weight: 500;
+    padding: clamp(0.875rem, 2vw, 1rem) clamp(1.25rem, 3vw, 1.5rem);
+    border-radius: var(--radius);
+    font-weight: 600;
     box-shadow: var(--shadow-lg);
-    min-width: 280px;
+    min-width: min(280px, calc(100vw - 2rem));
+    max-width: 400px;
     transform: translateX(120%);
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.4s ease;
 }
 
 .toast.show {
@@ -367,15 +361,15 @@ button.primary i {
 }
 
 .toast.success {
-    background: #ecfdf5;
-    color: var(--success);
-    border: 2px solid var(--success);
+    background: var(--white);
+    color: var(--black);
+    border: 2px solid var(--black);
 }
 
 .toast.error {
-    background: #fef2f2;
-    color: var(--error);
-    border: 2px solid var(--error);
+    background: var(--black);
+    color: var(--white);
+    border: 2px solid var(--black);
 }
 
 /* Buttons */
@@ -383,52 +377,51 @@ button.primary i {
 .install-button {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 0.5rem;
-    background: var(--accent);
-    color: white;
-    padding: 0.875rem 1.5rem;
-    border-radius: var(--radius-md);
+    background: var(--black);
+    color: var(--white);
+    padding: clamp(0.75rem, 2vw, 0.875rem) clamp(1.25rem, 3vw, 1.5rem);
+    border-radius: var(--radius);
     text-decoration: none;
     font-weight: 600;
-    font-size: 0.9375rem;
+    font-size: clamp(0.875rem, 2vw, 1rem);
     transition: var(--transition);
-    box-shadow: var(--shadow-sm);
 }
 
 .donation-button:hover,
 .install-button:hover {
-    background: var(--accent-hover);
+    opacity: 0.85;
     transform: translateY(-1px);
-    box-shadow: var(--shadow-md);
 }
 
 .donation-button i {
-    color: #ff6b6b;
+    color: var(--white);
 }
 
 /* Footer */
 footer {
     margin-top: clamp(3rem, 6vw, 5rem);
-    padding: 2rem 0;
+    padding: clamp(1.5rem, 3vw, 2rem) 0;
     text-align: center;
-    font-size: 0.875rem;
-    border-top: 1px solid var(--border);
+    font-size: clamp(0.8125rem, 2vw, 0.875rem);
+    border-top: 2px solid var(--black);
 }
 
 footer a {
-    color: var(--accent);
-    text-decoration: none;
-    font-weight: 500;
+    color: var(--black);
+    text-decoration: underline;
+    font-weight: 600;
 }
 
 footer a:hover {
-    text-decoration: underline;
+    opacity: 0.7;
 }
 
 footer small {
     display: block;
     margin-top: 1rem;
-    color: var(--text-secondary);
+    color: var(--gray-dark);
 }
 
 footer .footer-buttons {
@@ -441,42 +434,24 @@ footer .footer-buttons {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    body {
-        padding: 1rem;
-    }
-
     .tabs {
         grid-template-columns: 1fr;
     }
 
     .output-actions {
-        justify-content: center;
+        justify-content: stretch;
     }
 
     .output-actions button {
         flex: 1;
-        min-width: 120px;
     }
 
     .password-wrapper {
         flex-direction: column;
     }
 
-    #pwa-install-container {
-        top: 1rem;
-        right: 1rem;
-    }
-
-    #pwa-install-btn {
-        padding: 0.625rem 1rem;
-        font-size: 0.875rem;
-    }
-
-    .toast {
-        top: 1rem;
-        right: 1rem;
-        left: 1rem;
-        min-width: auto;
+    #toggle-pass {
+        width: 100%;
     }
 }
 
@@ -487,7 +462,6 @@ footer .footer-buttons {
 
     button.primary {
         width: 100%;
-        justify-content: center;
     }
 
     footer .footer-buttons {
@@ -497,20 +471,28 @@ footer .footer-buttons {
     .donation-button,
     .install-button {
         width: 100%;
-        justify-content: center;
+    }
+
+    .toast {
+        left: 1rem;
+        right: 1rem;
     }
 }
 
-@media (prefers-color-scheme: dark) {
-    :root {
-        --bg-primary: #0f172a;
-        --bg-secondary: #1e293b;
-        --text-primary: #f1f5f9;
-        --text-secondary: #94a3b8;
-        --border: #334155;
+/* Extra small devices */
+@media (max-width: 360px) {
+    body {
+        padding: 0.75rem;
     }
 
-    textarea[readonly] {
-        background: var(--bg-secondary);
+    .tab {
+        font-size: 0.875rem;
+    }
+}
+
+/* Large screens optimization */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 900px;
     }
 }
