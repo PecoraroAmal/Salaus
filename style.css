@@ -368,7 +368,7 @@ main.info h3 {
 
 main.info p {
     margin-bottom: 1rem;
-    font-size: clamp(0.9375rem, 2.2vw, 1rem);
+    font-size: clamp(0.9375rem, 3.0vw, 1rem);
 }
 
 main.info p strong {
@@ -386,7 +386,7 @@ main.info ol {
 main.info ul li,
 main.info ol li {
     margin-bottom: 0.75rem;
-    font-size: clamp(0.9375rem, 2.2vw, 1rem);
+    font-size: clamp(0.9375rem, 3.0vw, 1rem);
     position: relative;
 }
 
@@ -627,7 +627,7 @@ footer .footer-buttons {
     }
 
     main.info ol li {
-        padding-left: 2.25rem;
+        padding-left: 3.05rem;
     }
 
     main.info ol li::before {
