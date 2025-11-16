@@ -1,6 +1,6 @@
 :root {
-    --black: #000000;
-    --white: #ffffff;
+    --black: #1c1c1c;
+    --white: #e5e5e5;
     --gray-light: #f5f5f5;
     --gray-mid: #9ca3af;
     --gray-dark: #374151;
@@ -145,7 +145,7 @@ input:focus {
 }
 
 textarea {
-    min-height: clamp(180px, 30vh, 220px);
+    min-height: clamp(180px, 3.1vh, 220px);
     resize: vertical;
 }
 

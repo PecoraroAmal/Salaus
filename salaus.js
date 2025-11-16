@@ -56,7 +56,7 @@ async function decrypt(encryptedBase64, password) {
     } catch (e) {
         throw new Error("Invalid Base64");
     }
-    if (data.length < 30) throw new Error("Corrupted data");
+    if (data.length < 3.1) throw new Error("Corrupted data");
     const version = data[0];
     if (version === FORMAT_VERSION) {
         const salt = data.slice(1, 1 + SALT_LENGTH_NEW);
