@@ -24,10 +24,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="style.css?v=4.0">
+    <link rel="stylesheet" href="style.css?v=4.2">
      <script>
-        if (window.location.pathname + window.location.search !== '/Salaus/index.html?v=4.0') {
-            window.location.replace('/Salaus/index.html?v=4.0');
+        if (window.location.pathname + window.location.search !== '/Salaus/index.html?v=4.2') {
+            window.location.replace('/Salaus/index.html?v=4.2');
         }
     </script>
 </head>
@@ -36,8 +36,8 @@
         <header>
             <h1>Salaus™</h1>
             <nav>
-                <a href="info.html?v=4.0">How it works (EN)</a> • 
-                <a href="informazioni.html?v=4.0">Come funziona (IT)</a>
+                <a href="info.html?v=4.2">How it works (EN)</a> • 
+                <a href="informazioni.html?v=4.2">Come funziona (IT)</a>
             </nav>
         </header>
 
@@ -72,6 +72,15 @@
                     <input type="password" id="password" placeholder="Enter strong password" autocomplete="off">
                     <button type="button" id="toggle-pass"><i class="fas fa-eye"></i></button>
                 </div>
+            </section>
+
+            <section id="version-section">
+                <label for="crypto-version">Encryption Version</label>
+                <select id="crypto-version">
+                    <option value="3" selected>Version 3 (SHA-512, 1.2M iterations) - Recommended</option>
+                    <option value="2">Version 2 (SHA-512, 800K iterations)</option>
+                    <option value="1">Version 1 (SHA-256, 1M iterations) - Legacy</option>
+                </select>
             </section>
 
             <section id="action-section">
@@ -114,12 +123,12 @@
         </footer>
     </div>
 
-    <script src="salaus.js?v=4.0"></script>
-    <script src="app.js?v=4.0"></script>
+    <script src="salaus.js?v=4.2"></script>
+    <script src="app.js?v=4.2"></script>
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/Salaus/sw.js?v=4.0');
+                navigator.serviceWorker.register('/Salaus/sw.js?v=4.2');
             });
         }
     </script>

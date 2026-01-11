@@ -13,8 +13,8 @@ const VERSION_1 = 1;
 const ITERATIONS_V1 = 1000000;
 const SALT_LENGTH_V1 = 16;
 
-// Current format version for new encryptions
-const CURRENT_VERSION = VERSION_3;
+// Current format version for new encryptions (will be overridden by UI selection)
+let CURRENT_VERSION = VERSION_3;
 
 // Common constants
 const IV_LENGTH = 12;
@@ -64,19 +64,33 @@ async function deriveKeyV1(password, salt) {
     );
 }
 
-async function encryptData(data, password) {
-    const salt = crypto.getRandomValues(new Uint8Array(SALT_LENGTH_V3));
+async function encryptData(data, password, version = CURRENT_VERSION) {
+    let salt, key, saltLength;
+    
+    if (version === VERSION_3) {
+        saltLength = SALT_LENGTH_V3;
+        salt = crypto.getRandomValues(new Uint8Array(SALT_LENGTH_V3));
+        key = await deriveKeyV3(password, salt);
+    } else if (version === VERSION_2) {
+        saltLength = SALT_LENGTH_V2;
+        salt = crypto.getRandomValues(new Uint8Array(SALT_LENGTH_V2));
+        key = await deriveKeyV2(password, salt);
+    } else {
+        saltLength = SALT_LENGTH_V1;
+        salt = crypto.getRandomValues(new Uint8Array(SALT_LENGTH_V1));
+        key = await deriveKeyV1(password, salt);
+    }
+    
     const iv = crypto.getRandomValues(new Uint8Array(IV_LENGTH));
-    const key = await deriveKeyV3(password, salt);
     const encoded = new TextEncoder().encode(JSON.stringify(data));
     const ciphertext = new Uint8Array(await crypto.subtle.encrypt(
         { name: "AES-GCM", iv }, key, encoded
     ));
-    const result = new Uint8Array(1 + SALT_LENGTH_V3 + IV_LENGTH + ciphertext.byteLength);
-    result.set([CURRENT_VERSION], 0);
+    const result = new Uint8Array(1 + saltLength + IV_LENGTH + ciphertext.byteLength);
+    result.set([version], 0);
     result.set(salt, 1);
-    result.set(iv, 1 + SALT_LENGTH_V3);
-    result.set(ciphertext, 1 + SALT_LENGTH_V3 + IV_LENGTH);
+    result.set(iv, 1 + saltLength);
+    result.set(ciphertext, 1 + saltLength + IV_LENGTH);
     return uint8ToBase64Url(result);
 }
 
@@ -161,6 +175,14 @@ function zeroPassword(pass) {
     }
 }
 
-window.encryptData = encryptData;
-window.decryptData = decryptData;
-window.zeroPassword = zeroPassword;
+window.SalausCrypto = {
+    encrypt: async (plaintext, password, version) => {
+        return await encryptData({ text: plaintext }, password, version);
+    },
+    decrypt: async (encryptedBase64, password) => {
+        const result = await decryptData(encryptedBase64, password);
+        return result.text;
+    },
+    wipePassword: zeroPassword,
+    setVersion: (v) => { CURRENT_VERSION = v; }
+};

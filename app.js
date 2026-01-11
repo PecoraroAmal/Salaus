@@ -32,6 +32,7 @@ async function initApp() {
     const toast = $('message');
     const pwaHeaderContainer = $('pwa-install-container');
     const pwaFooterBtn = $('pwa-install-btn-footer');
+    const cryptoVersion = $('crypto-version');
 
     document.querySelectorAll('.tab').forEach(tab => {
         tab.addEventListener('click', () => {
@@ -75,7 +76,8 @@ async function initApp() {
         try {
             const plain = currentFile ? await currentFile.text() : $('plain-text').value.trim();
             if (!plain) return showToast('Enter text or upload a file', 'error');
-            const encrypted = await SalausCrypto.encrypt(plain, pwd);
+            const version = parseInt(cryptoVersion.value);
+            const encrypted = await SalausCrypto.encrypt(plain, pwd, version);
             displayResult(encrypted, true);
             showToast('Encrypted successfully!', 'success');
         } catch (e) {
