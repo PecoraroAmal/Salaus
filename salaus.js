@@ -82,7 +82,7 @@ async function encryptData(data, password, version = CURRENT_VERSION) {
     }
     
     const iv = crypto.getRandomValues(new Uint8Array(IV_LENGTH));
-    const encoded = new TextEncoder().encode(JSON.stringify(data));
+    const encoded = new TextEncoder().encode(data);
     const ciphertext = new Uint8Array(await crypto.subtle.encrypt(
         { name: "AES-GCM", iv }, key, encoded
     ));
@@ -115,7 +115,7 @@ async function decryptData(encryptedBase64, password) {
             const decrypted = await crypto.subtle.decrypt(
                 { name: "AES-GCM", iv }, key, ciphertext
             );
-            return JSON.parse(new TextDecoder().decode(decrypted));
+            return new TextDecoder().decode(decrypted);
         } catch (e) {
             throw new Error("Incorrect password or corrupted data");
         }
@@ -131,7 +131,7 @@ async function decryptData(encryptedBase64, password) {
             const decrypted = await crypto.subtle.decrypt(
                 { name: "AES-GCM", iv }, key, ciphertext
             );
-            return JSON.parse(new TextDecoder().decode(decrypted));
+            return new TextDecoder().decode(decrypted);
         } catch (e) {
             throw new Error("Incorrect password or corrupted data");
         }
@@ -147,7 +147,7 @@ async function decryptData(encryptedBase64, password) {
         const decrypted = await crypto.subtle.decrypt(
             { name: "AES-GCM", iv }, key, ciphertext
         );
-        return JSON.parse(new TextDecoder().decode(decrypted));
+        return new TextDecoder().decode(decrypted);
     } catch (e) {
         throw new Error("Incorrect password or corrupted data");
     }
@@ -177,11 +177,10 @@ function zeroPassword(pass) {
 
 window.SalausCrypto = {
     encrypt: async (plaintext, password, version) => {
-        return await encryptData({ text: plaintext }, password, version);
+        return await encryptData(plaintext, password, version);
     },
     decrypt: async (encryptedBase64, password) => {
-        const result = await decryptData(encryptedBase64, password);
-        return result.text;
+        return await decryptData(encryptedBase64, password);
     },
     wipePassword: zeroPassword,
     setVersion: (v) => { CURRENT_VERSION = v; }
