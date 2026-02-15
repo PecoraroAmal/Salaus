@@ -27,8 +27,5 @@ Write or upload a .txt/.json file
 - Memory zeroing after use
 - No cookies, no analytics
 
-## Donate
-Love Salaus? [Buy me a coffee](https://www.paypal.com/donate/?hosted_button_id=5Z5N9EBJERXC6)
-
 ## License
 MIT © 2025 – Free to use, modify, and distribute.
